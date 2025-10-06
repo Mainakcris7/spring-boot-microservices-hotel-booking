@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api_gateway" options="-parameters" />
+      <module name="api_gateway.main" options="-parameters" />
+      <module name="api_gateway.test" options="-parameters" />
+      <module name="auth-service" options="-parameters" />
+      <module name="auth-service.main" options="-parameters" />
+      <module name="auth-service.test" options="-parameters" />
+      <module name="booking_service" options="-parameters" />
+      <module name="booking_service.main" options="-parameters" />
+      <module name="booking_service.test" options="-parameters" />
+      <module name="customer-service" options="-parameters" />
+      <module name="customer-service.main" options="-parameters" />
+      <module name="customer-service.test" options="-parameters" />
+      <module name="eureka_server" options="-parameters" />
+      <module name="eureka_server.main" options="-parameters" />
+      <module name="eureka_server.test" options="-parameters" />
+      <module name="hotel_service" options="-parameters" />
+      <module name="hotel_service.main" options="-parameters" />
+      <module name="hotel_service.test" options="-parameters" />
+      <module name="notification_service" options="-parameters" />
+      <module name="notification_service.main" options="-parameters" />
+      <module name="notification_service.test" options="-parameters" />
+      <module name="room_service" options="-parameters" />
+      <module name="room_service.main" options="-parameters" />
+      <module name="room_service.test" options="-parameters" />
+    </option>
+  </component>
+</project>

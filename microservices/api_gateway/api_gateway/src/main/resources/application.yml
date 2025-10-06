@@ -1,0 +1,42 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: HOTEL-API
+              uri: lb://HOTEL-SERVICE
+              predicates:
+                - Path=/hotels/**
+              filters:
+                - name: AuthFilter
+
+            - id: ROOM-API
+              uri: lb://ROOM-SERVICE
+              predicates:
+                - Path=/rooms/**
+              filters:
+                - name: AuthFilter
+
+            - id: BOOKING-API
+              uri: lb://BOOKING-SERVICE
+              predicates:
+                - Path=/bookings/**
+              filters:
+                - name: AuthFilter
+
+            - id: CUSTOMER-API
+              uri: lb://CUSTOMER-SERVICE
+              predicates:
+                - Path=/customers/**
+              filters:
+                - name: AuthFilter
+
+            - id: AUTH-API
+              uri: lb://AUTH-SERVICE
+              predicates:
+                - Path=/auth/**
+              filters:
+                - name: AuthFilter
+
+
