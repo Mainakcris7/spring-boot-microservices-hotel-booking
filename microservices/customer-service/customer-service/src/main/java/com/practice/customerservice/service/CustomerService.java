@@ -1,6 +1,7 @@
 package com.practice.customerservice.service;
 
 import com.practice.customerservice.apiclient.BookingApiClient;
+import com.practice.customerservice.dto.CustomerDto;
 import com.practice.customerservice.exception.CustomerException;
 import com.practice.customerservice.model.Customer;
 import com.practice.customerservice.repository.CustomerRepository;
@@ -20,36 +21,41 @@ public class CustomerService {
     private final CustomerRepository repo;
     private final BookingApiClient bookingApiClient;
 
-    public ResponseEntity<List<Customer>> getAllCustomers(){
+    public ResponseEntity<List<CustomerDto>> getAllCustomers() {
         List<Customer> customers = repo.findAll();
-        if(customers.isEmpty()){
+        if (customers.isEmpty()) {
             log.error("No customers found.");
             throw new CustomerException("No customers found.", HttpStatus.NOT_FOUND);
         }
 
         log.info("All customer details returned");
-        return ResponseEntity.ok(customers);
+        List<CustomerDto> customerDtos = customers.stream()
+                .map(customer -> new CustomerDto(customer.getId(), customer.getName(), customer.getEmail()))
+                .toList();
+        return ResponseEntity.ok(customerDtos);
     }
 
-    public ResponseEntity<Customer> getCustomerById(int id){
+    public ResponseEntity<CustomerDto> getCustomerById(int id) {
         Customer customer = repo.findById(id).orElse(null);
-        if(customer == null){
+        if (customer == null) {
             log.error("No customer found with id: {}", id);
             throw new CustomerException(String.format("No customer found with id: %d", id), HttpStatus.NOT_FOUND);
         }
         log.info("Customer details returned for customer with id: {}", id);
-        return ResponseEntity.ok(customer);
+        CustomerDto customerDto = new CustomerDto(customer.getId(), customer.getName(), customer.getEmail());
+        return ResponseEntity.ok(customerDto);
     }
 
-    public ResponseEntity<Void> deleteCustomerById(int id){
+    public ResponseEntity<Void> deleteCustomerById(int id) {
         Customer customer = repo.findById(id).orElse(null);
-        if(customer == null){
+        if (customer == null) {
             log.error("Failed to delete customer as no customer found with id: {}", id);
-            throw new CustomerException(String.format("Failed to delete customer as no customer found with id: %d", id), HttpStatus.BAD_REQUEST);
+            throw new CustomerException(String.format("Failed to delete customer as no customer found with id: %d", id),
+                    HttpStatus.BAD_REQUEST);
         }
-        try{
+        try {
             bookingApiClient.deleteBookingsByCustomerId(id);
-        }catch (FeignException.FeignClientException e){
+        } catch (FeignException.FeignClientException e) {
             log.warn(e.getMessage());
         }
         repo.delete(customer);

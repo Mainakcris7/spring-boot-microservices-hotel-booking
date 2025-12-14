@@ -1,12 +1,12 @@
 package com.practice.bookingservice.apiclient;
 
-import com.practice.bookingservice.dto.HotelDto;
+import com.practice.bookingservice.dto.CustomerDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "hotel-service")
-public interface HotelApiClient {
-    @GetMapping("/hotels/{id}")
-    HotelDto getHotelById(@PathVariable int id);
+@FeignClient(name = "customer-service")
+public interface CustomerApiClient {
+    @GetMapping("/customers/{id}")
+    CustomerDto getCustomerById(@PathVariable int id);
 }

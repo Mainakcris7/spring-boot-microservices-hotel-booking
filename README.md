@@ -1,8 +1,14 @@
-# Hotel Booking Microservices
+# Hotel Booking Microservices 🏨
+
+[![Java 21](https://img.shields.io/badge/Java-21-blue)](https://www.oracle.com/java/)
+[![Spring Boot 3.5.4](https://img.shields.io/badge/Spring%20Boot-3.5.4-brightgreen)](https://spring.io/projects/spring-boot)
+[![Kafka](https://img.shields.io/badge/Kafka-enabled-orange)](https://kafka.apache.org/)
+[![Gradle](https://img.shields.io/badge/Build-Gradle-yellowgreen)](https://gradle.org/)
+[![H2 DB](https://img.shields.io/badge/Database-H2-lightgrey)](https://www.h2database.com/)
 
 A comprehensive Spring Boot microservices architecture for a hotel room booking system. This project demonstrates modern microservices patterns including service discovery, API gateway, JWT authentication, event-driven architecture with Kafka, and distributed tracing.
 
-## Project Overview
+## Project Overview 🚀
 
 This hotel booking system is built using a microservices architecture with the following components:
 
@@ -13,7 +19,7 @@ This hotel booking system is built using a microservices architecture with the f
 - **Event-Driven Architecture**: Kafka-based notification system
 - **Observability**: Distributed tracing with Micrometer and Prometheus metrics
 
-### Technology Stack
+### Technology Stack 🧰
 
 - **Language**: Java 21
 - **Framework**: Spring Boot 3.5.4
@@ -26,9 +32,9 @@ This hotel booking system is built using a microservices architecture with the f
 
 ---
 
-## Microservices
+## Microservices 🧩
 
-### 1. API Gateway
+### 1. API Gateway 🛡️
 **Port**: 7777  
 **Description**: Central routing gateway that directs all incoming requests to appropriate microservices. Implements authentication filtering and load balancing using Eureka service discovery.
 
@@ -47,7 +53,7 @@ This hotel booking system is built using a microservices architecture with the f
 
 ---
 
-### 2. Auth Service
+### 2. Auth Service 🔐
 **Port**: 1111  
 **Description**: Handles user authentication and authorization using JWT tokens. Manages customer registration, login, and token validation.
 
@@ -69,7 +75,7 @@ This hotel booking system is built using a microservices architecture with the f
 
 ---
 
-### 3. Booking Service
+### 3. Booking Service 📅
 **Port**: 9090  
 **Description**: Manages hotel room bookings. Handles creating, updating, and canceling bookings. Publishes booking events to Kafka for notifications.
 
@@ -99,7 +105,7 @@ This hotel booking system is built using a microservices architecture with the f
 
 ---
 
-### 4. Customer Service
+### 4. Customer Service 👥
 **Port**: 6060  
 **Description**: Manages customer information. Provides endpoints to retrieve and manage customer data.
 
@@ -119,7 +125,7 @@ This hotel booking system is built using a microservices architecture with the f
 
 ---
 
-### 5. Eureka Server
+### 5. Eureka Server 🧭
 **Port**: 8761  
 **Description**: Service registry and discovery server. All microservices register themselves here, enabling dynamic service-to-service communication.
 
@@ -136,7 +142,7 @@ This hotel booking system is built using a microservices architecture with the f
 
 ---
 
-### 6. Hotel Service
+### 6. Hotel Service 🏨
 **Port**: 7070  
 **Description**: Manages hotel information including hotel details, addresses, and metadata.
 
@@ -159,7 +165,7 @@ This hotel booking system is built using a microservices architecture with the f
 
 ---
 
-### 7. Room Service
+### 7. Room Service 🛏️
 **Port**: 8080  
 **Description**: Manages room details within hotels. Handles room creation, updates, and availability management.
 
@@ -195,7 +201,7 @@ This hotel booking system is built using a microservices architecture with the f
 
 ---
 
-### 8. Notification Service
+### 8. Notification Service 🔔
 **Port**: 5050  
 **Description**: Event-driven service that consumes booking events from Kafka and sends notifications. Implements email notifications (dummy) for booking confirmations and cancellations.
 
@@ -219,7 +225,7 @@ This hotel booking system is built using a microservices architecture with the f
 
 ---
 
-## Payload/DTO Structure
+## Payload/DTO Structure 📦
 
 ### Kafka Notification Payload
 
@@ -254,7 +260,7 @@ Enum for event types:
 
 ---
 
-## Project Setup and Installation
+## Project Setup and Installation ⚙️
 
 ### Prerequisites
 
@@ -400,7 +406,7 @@ cd microservices/api_gateway/api_gateway
 ./gradlew bootRun
 ```
 
-### Verification
+### Verification ✅
 
 Once all services are running:
 
@@ -410,7 +416,7 @@ Once all services are running:
 
 ---
 
-## API Usage Examples
+## API Usage Examples 💻
 
 ### 1. Register a New Customer
 
@@ -497,7 +503,7 @@ curl -X GET http://localhost:7777/bookings \
 
 ---
 
-## Architecture Diagram
+## Architecture Diagram 🏗️
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -538,7 +544,7 @@ curl -X GET http://localhost:7777/bookings \
 
 ---
 
-## Configuration Files
+## Configuration Files 🛠️
 
 ### Key Application Properties
 
@@ -559,7 +565,7 @@ Each microservice has configuration files:
 
 ---
 
-## Monitoring and Observability
+## Monitoring and Observability 📈
 
 ### Metrics
 - Prometheus metrics exposed at `/actuator/prometheus` on each service
@@ -578,7 +584,7 @@ Each microservice has configuration files:
 
 ---
 
-## Troubleshooting
+## Troubleshooting 🐞
 
 ### Issue: Services not registering with Eureka
 **Solution**: Ensure Eureka Server is started first and running on port 8761
@@ -597,7 +603,7 @@ Each microservice has configuration files:
 
 ---
 
-## Performance Features
+## Performance Features ⚡
 
 - **Virtual Threads**: Enabled for improved concurrency and resource efficiency
 - **Load Balancing**: Client-side load balancing via Eureka and Spring Cloud LoadBalancer
@@ -606,7 +612,7 @@ Each microservice has configuration files:
 
 ---
 
-## Future Enhancements
+## Future Enhancements 🚧
 
 - Database migration to persistent databases (PostgreSQL/MySQL)
 - API documentation with Swagger/OpenAPI
@@ -619,25 +625,7 @@ Each microservice has configuration files:
 
 ---
 
-## Contributors
-
-- **Project**: Spring Boot Microservices - Hotel Booking System
-- **Author**: Development Team
-
----
-
-## License
-
-This project is provided as-is for educational and commercial use.
-
----
-
-## Contact & Support
+## Contact & Support ✉️
 
 For issues, questions, or contributions, please contact the development team or raise an issue in the repository.
 
----
-
-**Last Updated**: December 2024  
-**Spring Boot Version**: 3.5.4  
-**Java Version**: 21
